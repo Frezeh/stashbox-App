@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, Image, TouchableOpacity, SafeAreaView } from "react-native";
 import AppIntroSlider from "react-native-app-intro-slider";
 import * as Animatable from "react-native-animatable";
 import BottomTabNavigator from "../navigation/tabNavigation";
@@ -11,21 +11,18 @@ const slides = [
     title: "Pay with card",
     text: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo",
     image: require("../assets/surface1.png"),
-    backgroundColor: "#80BFFF",
   },
   {
     key: 2,
     title: "Grow your funds",
     text: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo",
     image: require("../assets/bank.png"),
-    backgroundColor: "#80BFFF",
   },
   {
     key: 3,
     title: "Pay anywhere, anytime",
     text: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo",
     image: require("../assets/atm.png"),
-    backgroundColor: "#80BFFF",
   },
 ];
 
@@ -38,7 +35,7 @@ const styles = StyleSheet.create({
   },
   image: {
     height: 400,
-    width: 400,
+    width: 400,   
   },
   title: {
     fontSize: 30,
@@ -59,16 +56,12 @@ export default function Slider({
   setToggleRegistration,
   setToggleSlider,
 }) {
-  const [showRealApp, setShowRealApp] = useState(false);
 
   const _onDone = (e) => {
     // User finished the introduction. Show real app through
     // navigation or simply by controlling state
     setToggleRegistration(true);
     setToggleSlider(false);
-    // setToggleNavigation(true);
-    // setShowRealApp(true);
-    // console.log('fffffffffffffff')
   };
 
   const _renderItem = ({ item }) => {
@@ -109,21 +102,13 @@ export default function Slider({
     );
   };
 
-  if (showRealApp) {
-    return (
-      <NavigationContainer>
-        <BottomTabNavigator />
-      </NavigationContainer>
-    );
-  } else {
-    return (
+  return (
       <AppIntroSlider
-        // showNextButton={false}
+        showNextButton={false}
         // showDoneButton={false}
         renderItem={_renderItem}
         data={slides}
         onDone={_onDone}
       />
-    );
-  }
+  );
 }
