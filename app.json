@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "shutterscore-app",
-    "slug": "shutterscore-app",
+    "name": "stashbox",
+    "slug": "stashbox-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
